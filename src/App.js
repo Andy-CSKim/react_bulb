@@ -9,39 +9,32 @@ import { useState } from 'react';
 // function app() {}
 function App() {
 
-  const [btText, setBtText] = useState("on");
+  const [title, setTitle] = useState("Bulb is off");
+  const [imgSrc, setImgSrc] = useState("pic_bulboff.gif");
 
-  const myFunction = () => {
-    console.log("myFunction")
-    const img = document.getElementById("demo");
-    //const bt = document.getElementById("bt");
-    console.log(img.src)
+  // to see how often the component is rendered
+  console.log(`App rendered : ${imgSrc}`);
 
-    if (img.src.includes("pic_bulboff.gif")) {
-        img.src = "pic_bulbon.gif";
-
-        //bt.innerHTML = "off"
-        setBtText("off")
-    } else {
-        img.src = "pic_bulboff.gif";
-        
-        //bt.innerHTML = "on"
-        setBtText("on")
-    }
-
+  function turnOn() {
+    console.log("turn on");
+    setTitle("Bulb is on");
+    setImgSrc("pic_bulbon.gif");
+  }
+  function turnOff() {
+    console.log("turn off");
+    setTitle("Bulb is off");
+    setImgSrc("pic_bulboff.gif");
   }
 
   return (
     <div className="App">
       <header className="App-header">
 
-        <h1>This is a heading</h1>
-        <p>This is a paragraph.</p>
+        <h1>{title}</h1>
 
-        <button onClick={myFunction} >{btText}</button>
-        <br/>
-
-        <img id="demo" src="pic_bulboff.gif" />
+        <button onClick={turnOn} >turn on</button>
+        <button onClick={turnOff} >turn off</button> <br />
+        <img src={imgSrc} />
 
       </header>
     </div>
