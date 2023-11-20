@@ -13,11 +13,13 @@ function App() {
 
   const [title, setTitle] = useState("Bulb is off");
   const [imgSrc, setImgSrc] = useState("pic_bulboff.gif");
-  const [name, setName] = useState("");
+  //const [name, setName] = useState("");
+  const name = useRef("");
   let my_value = 0;
 
   // to see how often the component is rendered
-  console.log(`React enter App() to render : imgSrc=${imgSrc}, name=${name}, count=${my_value}`);
+  //console.log(`React enter App() to render : imgSrc=${imgSrc}, name=${name}, count=${my_value}`);
+  console.log(`React enter App() to render : imgSrc=${imgSrc}, name=${name.current}, count=${my_value}`);
 
   function turnOn() {
     my_value++;
@@ -42,7 +44,8 @@ function App() {
 
         <button onClick={turnOn} >turn on</button>
         <button onClick={turnOff} >turn off</button> <br />
-        <input type="text" onInput={e => setName(e.target.value)} /><br/>
+        {/* <input type="text" onInput={e => setName(e.target.value)} /><br/> */}
+        <input type="text" onInput={e => name.current = e.target.value} /><br/>
         <img src={imgSrc} />
 
       </header>
